@@ -20,7 +20,7 @@ def get_interarrival_times():
                 continue
 
             ts = int(items[0])
-            if last_ts:
+            if last_ts != None:
                 interarrival_times.append(ts - last_ts)
 
             last_ts = ts

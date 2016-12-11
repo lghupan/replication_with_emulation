@@ -20,7 +20,7 @@ def get_on_off_interval():
                 continue
 
             ts = int(items[0])
-            if last_ts and ts != last_ts:
+            if last_ts != None and ts != last_ts:
                 on_off_interval.append(ts - last_ts)
 
             last_ts = ts

@@ -29,7 +29,7 @@ def get_arrivals_per_ms():
 
             ts = int(items[0])
             if ts != last_ts:
-                if last_ts:
+                if last_ts != None:
                     arrivals_per_ms.append(pkts)
 
                     for silent_ts in xrange(last_ts + 1, ts):
@@ -89,7 +89,7 @@ def generate_trace(model):
         trace = open('hmm_trace_%s' % run_id, 'w')
 
         for ts in xrange(X.size):
-            for i in xrange(X[ts]):
+            for i in xrange(X[ts][0]):
                 trace.write('%s\n' % ts)
 
         trace.close()
