@@ -29,7 +29,7 @@ def get_arrivals_per_ms():
 
             ts = int(items[0])
             if ts != last_ts:
-                if last_ts:
+                if last_ts != None:
                     arrivals_per_ms.append(pkts)
 
                     for silent_ts in xrange(last_ts + 1, ts):
