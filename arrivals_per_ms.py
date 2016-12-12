@@ -1,9 +1,14 @@
+#!/usr/bin/env python
+
+import collections
+
+
 def get_arrivals_per_ms():
     # get arrivals per ms
     arrivals_per_ms = []
     pkts = 0
 
-    log = open('/usr/share/mahimahi/traces/Verizon-LTE-driving.down')
+    log = open('/usr/share/mahimahi/traces/TMobile-LTE-driving.down')
 
     last_ts = None
     for line in log:
@@ -20,3 +25,11 @@ def get_arrivals_per_ms():
     log.close()
 
     return arrivals_per_ms
+
+
+if __name__ == '__main__':
+    data = get_arrivals_per_ms()
+    data_cnt = collections.Counter(data)
+
+    print 'Arrivals per ms: (arrivals_per_ms, occurrence)'
+    print sorted(data_cnt.items(), key=lambda x: x[0])

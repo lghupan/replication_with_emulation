@@ -1,8 +1,13 @@
+#!/usr/bin/env python
+
+import collections
+
+
 def get_on_off_interval():
     # get on off interval
     on_off_interval = []
 
-    log = open('/usr/share/mahimahi/traces/Verizon-LTE-driving.down')
+    log = open('/usr/share/mahimahi/traces/TMobile-LTE-driving.down')
 
     last_ts = None
     for line in log:
@@ -15,3 +20,11 @@ def get_on_off_interval():
     log.close()
 
     return on_off_interval
+
+
+if __name__ == '__main__':
+    data = get_on_off_interval()
+    data_cnt = collections.Counter(data)
+    
+    print 'Interval between two ON states (ms): (interval, occurrence)'
+    print sorted(data_cnt.items(), key=lambda x: x[0])
