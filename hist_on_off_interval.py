@@ -19,7 +19,7 @@ def main():
     if bins_num > 50:
         bins_num = 50
     ax.hist(data, bins=bins_num, normed=True)
-    ax.set_xlabel('Interval between ON and OFF states (ms)')
+    ax.set_xlabel('Interval between two ON states (ms)')
     ax.set_ylabel('Frequency')
     ax.grid()
 
