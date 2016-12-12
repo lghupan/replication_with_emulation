@@ -10,7 +10,7 @@ def get_arrivals_per_ms():
     arrivals_per_ms = []
     pkts = 0
 
-    log = open('/usr/share/mahimahi/traces/Verizon-LTE-driving.down')
+    log = open('/usr/share/mahimahi/traces/TMobile-LTE-driving.down')
 
     last_ts = None
     for line in log:
@@ -36,13 +36,10 @@ def get_arrivals_per_ms():
 def train_hmm():
     X = get_arrivals_per_ms()
 
-    # only allow output to be [0, 20]
+    # only allow output to be [0, 26]
     for i in xrange(len(X)):
-        if X[i] > 20:
-            X[i] = 20
-
-    # in case any output in [0, 20] did not occur
-    X += range(0, 22)
+        if X[i] > 26:
+            X[i] = 26
 
     # initialize start probability and transmission matrix
     n_states = 4
@@ -51,7 +48,7 @@ def train_hmm():
     trans_mat = np.ones((n_states, n_states)) * p
 
     # initialize emission probability
-    n_emissions = 21
+    n_emissions = 27
     p = 1.0 / n_emissions
     emission_prob = np.ones((n_states, n_emissions)) * p
 
